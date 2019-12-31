@@ -1,0 +1,28 @@
+## Initializers
+#org.springframework.context.ApplicationContextInitializer=\
+#com.github.ore.boot.autoconfigure.config.diamond.DiamondContextInitializer
+
+#org.springframework.context.ApplicationContextInitializer=\
+#com.github.ore.boot.autoconfigure.dubbo.context.DubboConfigurationApplicationContextInitializer
+
+## Application Listeners
+#org.springframework.context.ApplicationListener=\
+#com.github.ore.boot.bootstrap.listener.BootStartupListener
+#com.github.ore.boot.autoconfigure.dubbo.listener.DubboHolderListener
+
+## Run Listeners
+org.springframework.boot.SpringApplicationRunListener=\
+org.springframework.boot.context.event.EventPublishingRunListener
+
+## PropertySource Loaders
+#org.springframework.boot.env.PropertySourceLoader=\
+#com.github.ore.boot.autoconfigure.config.properties.PropertiesPropertySourceLoader,\
+#com.github.ore.boot.autoconfigure.config.yml.YamlPropertySourceLoader
+
+#com.github.ore.boot.autoconfigure.config.diamond.DiamondPropertySourceLoader
+
+## AutoConfigurations
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.github.ore.boot.autoconfigure.context.SpringContextAutoConfigure,\
+com.github.ore.boot.autoconfigure.context.GlobalAutoConfigure
+
