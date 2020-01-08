@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 
- * 统一处理异常,全局异常处理
+ * 统一处理异常,全局异常处理，只处理[系统级别]异常
  * 
  * @author huangzz
  *
@@ -43,7 +43,7 @@ public class GlobalExceptionHandler {
 		log.error("occurs error when execute method ,message {}", e.getMessage());
 		ExceptionUtils.printRootCauseStackTrace(e);
 		ResultEntity<String> result = new ResultEntity<String>();
-		result.setErrorCode(ResultMessage.splitCode(ResultMessage.HTTP_ERROR_400));
+		result.setCode(ResultMessage.splitCode(ResultMessage.HTTP_ERROR_400));
 		result.setMsg(e.getMessage());
 		return result;
 	}
@@ -61,7 +61,7 @@ public class GlobalExceptionHandler {
 		log.error("occurs error when execute method ,message {}", e.getMessage());
 		ExceptionUtils.printRootCauseStackTrace(e);
 		ResultEntity<String> result = new ResultEntity<String>();
-		result.setErrorCode(ResultMessage.splitCode(ResultMessage.HTTP_ERROR_404));
+		result.setCode(ResultMessage.splitCode(ResultMessage.HTTP_ERROR_404));
 		result.setMsg(e.getMessage());
 		return result;
 	}
@@ -79,7 +79,7 @@ public class GlobalExceptionHandler {
 		log.error("occurs error when execute method ,message {}", e.getMessage());
 		ExceptionUtils.printRootCauseStackTrace(e);
 		ResultEntity<String> result = new ResultEntity<String>();
-		result.setErrorCode(ResultMessage.splitCode(ResultMessage.HTTP_ERROR_504));
+		result.setCode(ResultMessage.splitCode(ResultMessage.HTTP_ERROR_504));
 		result.setMsg(e.getMessage());
 		return result;
 	}
@@ -97,7 +97,7 @@ public class GlobalExceptionHandler {
 		log.error("occurs error when execute method ,message {}", e.getMessage());
 		ExceptionUtils.printRootCauseStackTrace(e);
 		ResultEntity<String> result = new ResultEntity<String>();
-		result.setErrorCode(ResultMessage.splitCode(ResultMessage.HTTP_ERROR_500));
+		result.setCode(ResultMessage.splitCode(ResultMessage.HTTP_ERROR_500));
 		result.setMsg(e.getMessage());
 		return result;
 	}

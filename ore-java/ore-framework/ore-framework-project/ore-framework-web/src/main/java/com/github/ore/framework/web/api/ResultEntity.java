@@ -3,10 +3,10 @@ package com.github.ore.framework.web.api;
 import java.util.Date;
 
 public class ResultEntity<T> {
-	// 请求接口的返回码成功或者失败
+	// [系统级别]请求接口的返回码成功或者失败
 	private String code = ResultMessage.splitCode(ResultMessage.SYSTEM_0);
 
-	// 失败的具体code
+	// [业务级别]按照业务需求定义code
 	// private String errorCode = ResultMessage.splitCode(ResultMessage.BIZ_10000);
 	private String errorCode = "";
 

@@ -15,11 +15,9 @@ org.springframework.boot.SpringApplicationRunListener=\
 org.springframework.boot.context.event.EventPublishingRunListener
 
 ## PropertySource Loaders
-#org.springframework.boot.env.PropertySourceLoader=\
-#com.github.ore.boot.autoconfigure.config.properties.PropertiesPropertySourceLoader,\
-#com.github.ore.boot.autoconfigure.config.yml.YamlPropertySourceLoader
-
-#com.github.ore.boot.autoconfigure.config.diamond.DiamondPropertySourceLoader
+org.springframework.boot.env.PropertySourceLoader=\
+com.github.ore.boot.autoconfigure.config.properties.PropertiesPropertySourceLoader,\
+com.github.ore.boot.autoconfigure.config.yml.YamlPropertySourceLoader
 
 ## AutoConfigurations
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\

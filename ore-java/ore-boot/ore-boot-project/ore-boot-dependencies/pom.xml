@@ -15,7 +15,7 @@
 
 	<properties>
 		<!-- ore-FrameWork versions -->
-		<com.github.ore.framework.version>ORE.1.0.1-SNAPSHOT</com.github.ore.framework.version>
+		<com.github.ore.framework.version>ORE.1.0.2-SNAPSHOT</com.github.ore.framework.version>
 
 		<!-- Third Party versions -->
 		<spring.boot.version>2.1.4.RELEASE</spring.boot.version>
