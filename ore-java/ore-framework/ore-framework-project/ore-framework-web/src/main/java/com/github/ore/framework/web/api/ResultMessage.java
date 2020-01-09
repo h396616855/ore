@@ -1,12 +1,15 @@
 package com.github.ore.framework.web.api;
 
 /**
- * 约定： 返回码和文字描述格式：n_文字描述，使用的时候是通过按照位数截取。 ResultCode.java 这个类就不需要要了 定义为接口，方便其他工程继承，添加自己的返回码和返回信息
+ * 约定： 返回码和文字描述格式：n_文字描述，使用的时候是通过按照位数截取。 ResultCode.java 这个类就不需要要了
+ * 定义为接口，方便其他工程继承，添加自己的返回码和返回信息
  *
  */
 public abstract class ResultMessage {
 
-	// 预定义返回码
+	/**
+	 * 预定义返回码
+	 */
 	public static final String SYSTEM_I1 = "-1^系统繁忙，此时请开发者稍候再试";
 	public static final String SYSTEM_0 = "0^请求成功";
 	public static final String SYSTEM_1 = "1^请求失败";
@@ -64,27 +67,14 @@ public abstract class ResultMessage {
 	public static final String HTTP_ERROR_511 = "511^需要网络授权";
 	public static final String HTTP_ERROR_520 = "520^未知错误";
 
-	// 自定义应用异常码：APP_1XXXX
-	public static final String APP_I10000 = "-10000^应用异常";
+	/**
+	 * 自定义应用异常码：APP_1XXXX
+	 */
 	public static final String APP_10000 = "10000^应用正常";
 
-	// 自定义业务返回码码：BIZ_2XXXX,BIZ_3XXXX,BIZ_4XXXX,BIZ_5XXXX 等
-	public static final String BIZ_I20000 = "-20000^业务异常";
+	/**
+	 * 自定义业务返回码：BIZ_2XXXX,BIZ_3XXXX,BIZ_4XXXX,BIZ_5XXXX 等
+	 */
 	public static final String BIZ_20000 = "20000^业务正常";
-
-	public static String splitCode(String message) {
-		String[] str = message.split("\\^");
-		return str[0];
-	}
-
-	public static String splitMsg(String message) {
-		String[] str = message.split("\\^");
-		return str[1];
-	}
-
-	public static void main(String[] args) {
-		System.out.println(ResultMessage.splitCode(APP_I10000));
-		System.out.println(ResultMessage.splitMsg(APP_10000));
-	}
 
 }

@@ -22,5 +22,7 @@ com.github.ore.boot.autoconfigure.config.yml.YamlPropertySourceLoader
 ## AutoConfigurations
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.github.ore.boot.autoconfigure.context.SpringContextAutoConfigure,\
-com.github.ore.boot.autoconfigure.context.GlobalAutoConfigure
+com.github.ore.boot.autoconfigure.context.GlobalRequestAutoConfigure,\
+com.github.ore.boot.autoconfigure.context.GlobalResponseAutoConfigure,\
+com.github.ore.boot.autoconfigure.context.GlobalExceptionAutoConfigure
 

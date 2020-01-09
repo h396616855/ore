@@ -36,7 +36,7 @@ public class PropertiesPropertySourceLoader implements PropertySourceLoader {
 			String key = it.next();
 			String value = properties.getProperty(key);
 			if (log.isDebugEnabled()) {
-				log.info(MarkerFactory.getMarker(logMarker), resource.getFilename() + " config is --- > {}={}", key, value);
+				log.info(MarkerFactory.getMarker(logMarker), resource.getFilename() + " config is >>> {}={}", key, value);
 			}
 		}
 		PropertiesPropertySource proSource = new PropertiesPropertySource(name, properties);

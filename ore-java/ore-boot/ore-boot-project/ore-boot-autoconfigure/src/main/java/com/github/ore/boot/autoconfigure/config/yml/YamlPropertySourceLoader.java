@@ -55,7 +55,7 @@ public class YamlPropertySourceLoader implements PropertySourceLoader {
 			String key = it.next();
 			Object value = loaded.get(0).get(key);
 			if (log.isDebugEnabled()) {
-				log.info(MarkerFactory.getMarker(logMarker), resource.getFilename() + " config is --- > {}={}", key, value);
+				log.info(MarkerFactory.getMarker(logMarker), resource.getFilename() + " config is >>> {}={}", key, value);
 			}
 		}
 
