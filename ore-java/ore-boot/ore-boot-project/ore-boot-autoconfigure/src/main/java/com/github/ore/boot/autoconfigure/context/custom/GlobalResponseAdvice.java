@@ -33,25 +33,22 @@ public class GlobalResponseAdvice implements ResponseBodyAdvice<Object> {
 	@Override
 	public Object beforeBodyWrite(Object body, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
 
-		String url = serverHttpRequest.getURI().toString();
-		String address = serverHttpRequest.getRemoteAddress().toString();
+		// String url = serverHttpRequest.getURI().toString();
+		// String address = serverHttpRequest.getRemoteAddress().toString();
 		String localAddress = serverHttpRequest.getLocalAddress().toString();
-		log.info("{} access path >>> {}", address, url);
+		// log.info("{} access path >>> {}", address, url);
 
 		if (body instanceof ResultEntity) {
 			log.info("{} response content >>> {}", localAddress, body.toString());
 			return body;
 		} else {
 			if (isBaseType(body)) {
-				ResultEntity<String> result = new ResultEntity<String>();
 				// Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 				Gson gson = new Gson();
-				result.setData(body.toString());
-				String jsonObject = gson.toJson(result);
+				String jsonObject = gson.toJson(ResultEntity.data(body.toString()));
 				log.info("{} response content >>> {}", localAddress, jsonObject);
 				return jsonObject;
 			} else {
-				ResultEntity<Object> result = new ResultEntity<Object>();
 
 				// 和swagger冲突，排除swagger的请求
 				if (null != body && (0 < body.toString().indexOf("path=/") 
@@ -60,9 +57,8 @@ public class GlobalResponseAdvice implements ResponseBodyAdvice<Object> {
 					log.info("{} response content >>> {}", localAddress, body.toString());
 					return body;
 				} else {
-					result.setData(body);
 					log.info("{} response content >>> {}", localAddress, body.toString());
-					return result;
+					return ResultEntity.data(body);
 				}
 			}
 

@@ -37,4 +37,26 @@ public class ResultEntity<T> {
 		this.code = code;
 		this.msg = msg;
 	}
+	
+	public static<T> ResultEntity<T> data(T data) {
+		ResultEntity<T> result = new ResultEntity<T>();
+		result.setData(data);
+		return result;
+	}
+
+	public ResultEntity<T> code(String code) {
+		this.code = code;
+		return this;
+	}
+
+	public ResultEntity<T> msg(String msg) {
+		this.msg = msg;
+		return this;
+	}
+
+	public ResultEntity<T> time(String time) {
+		this.time = time;
+		return this;
+	}
+
 }
