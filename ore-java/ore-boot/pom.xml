@@ -15,12 +15,12 @@
 		<main.basedir>${basedir}</main.basedir>
 
 		<!-- IOV's ore-boot name and version setting -->
-		<revision>1.0.4.RELEASE</revision>
+		<revision>1.0.5.RELEASE</revision>
 	</properties>
 
 	<modules>
 		<module>ore-boot-project</module>
-		<module>ore-boot-samples</module>
+		<!-- <module>ore-boot-samples</module> -->
 	</modules>
 
 	<build>

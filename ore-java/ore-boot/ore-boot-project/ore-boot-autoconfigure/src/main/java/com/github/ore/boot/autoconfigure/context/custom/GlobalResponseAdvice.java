@@ -19,7 +19,8 @@ public class GlobalResponseAdvice implements ResponseBodyAdvice<Object> {
 
 	private boolean isBaseType(Object object) {
 		Class<? extends Object> className = object.getClass();
-		if (className.equals(java.lang.String.class) || className.equals(java.lang.Integer.class) || className.equals(java.lang.Byte.class) || className.equals(java.lang.Long.class) || className.equals(java.lang.Double.class) || className.equals(java.lang.Float.class) || className.equals(java.lang.Character.class) || className.equals(java.lang.Short.class) || className.equals(java.lang.Boolean.class)) {
+		if (className.equals(java.lang.String.class) || className.equals(java.lang.Integer.class) || className.equals(java.lang.Byte.class) || className.equals(java.lang.Long.class) || className.equals(java.lang.Double.class) || className.equals(java.lang.Float.class)
+				|| className.equals(java.lang.Character.class) || className.equals(java.lang.Short.class) || className.equals(java.lang.Boolean.class)) {
 			return true;
 		}
 		return false;
@@ -33,20 +34,16 @@ public class GlobalResponseAdvice implements ResponseBodyAdvice<Object> {
 	@Override
 	public Object beforeBodyWrite(Object body, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
 
-		// String url = serverHttpRequest.getURI().toString();
-		// String address = serverHttpRequest.getRemoteAddress().toString();
-		String localAddress = serverHttpRequest.getLocalAddress().toString();
-		// log.info("{} access path >>> {}", address, url);
-
+		// Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+		Gson gson = new Gson();
+		String response = "response body   >>> {}";
 		if (body instanceof ResultEntity) {
-			log.info("{} response content >>> {}", localAddress, body.toString());
+			log.info(response, gson.toJson(body));
 			return body;
 		} else {
 			if (isBaseType(body)) {
-				// Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
-				Gson gson = new Gson();
 				String jsonObject = gson.toJson(ResultEntity.data(body.toString()));
-				log.info("{} response content >>> {}", localAddress, jsonObject);
+				log.info(response, jsonObject);
 				return jsonObject;
 			} else {
 
@@ -54,10 +51,10 @@ public class GlobalResponseAdvice implements ResponseBodyAdvice<Object> {
 				if (null != body && (0 < body.toString().indexOf("path=/") 
 						|| 0 < body.toString().indexOf("swagger") 
 						|| 0 <= body.toString().indexOf("springfox.documentation.spring.web.json.Json"))) {
-					log.info("{} response content >>> {}", localAddress, body.toString());
+					log.info(response, body.toString());
 					return body;
 				} else {
-					log.info("{} response content >>> {}", localAddress, body.toString());
+					log.info(response, gson.toJson(body));
 					return ResultEntity.data(body);
 				}
 			}
