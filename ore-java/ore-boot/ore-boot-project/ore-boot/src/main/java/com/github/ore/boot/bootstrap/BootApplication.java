@@ -50,8 +50,7 @@ public class BootApplication {
 			if (null == className) {
 
 				// 应用打成Jar包方式查找执行类
-				// Windows OS
-				String jarFile = path.replaceAll("jar!/BOOT-INF/classes!/", "jar").replaceFirst("file:/", "");
+				String jarFile = path.replaceAll("jar!/BOOT-INF/classes!/", "jar").replaceFirst("file:", "");
 				className = SearchClass.searchJar(starterClass, jarFile);
 				if (null == className) {
 					logger.error("****[ " + starterClass + " ]**** class is not existence! Server stop!");
