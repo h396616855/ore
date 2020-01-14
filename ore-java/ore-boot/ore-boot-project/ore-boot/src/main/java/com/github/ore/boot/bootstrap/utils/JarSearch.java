@@ -96,6 +96,8 @@ public class JarSearch {
      * @param args The command line arguments
      */
     public static void main(String[] args) {
+    	
+    	args = new String[]{"-r","BootStarter","E:/R9Home/ore-seed/ore-seed-template/framework/ore/ore-java/ore-boot/ore-boot-samples/ore-boot-sample/target/ore-boot-sample-1.0.0.RELEASE.jar"};
         
         if (args.length < 2) {
             System.err.println("Usage: java " + JarSearch.class + " [-r] [-a] <regexpstring> [file ...]");

@@ -26,7 +26,9 @@ public class GlobalRequestBodyFilter extends OncePerRequestFilter implements Ord
 		}
 		Gson gson = new Gson();
 		log.info("access path to  >>> {}", request.getRequestURL());
-		log.info("request parames <<< {}", gson.toJson(request.getParameterMap()));
+		if (!request.getParameterMap().isEmpty()) {
+			log.info("request parames <<< {}", gson.toJson(request.getParameterMap()));
+		}
 		filterChain.doFilter(request, response);
 		return;
 	}

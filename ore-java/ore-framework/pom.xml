@@ -14,7 +14,7 @@
 		<main.basedir>${basedir}</main.basedir>
 		
 		<!-- IOV's ORE Framework name and version setting -->
-		<revision>1.0.5.RELEASE</revision>
+		<revision>1.0.6.RELEASE</revision>
 	</properties>
 
 	<modules>

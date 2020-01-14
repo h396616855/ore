@@ -40,18 +40,27 @@ public class BootApplication {
 			if (null != url) {
 				path = BootApplication.class.getResource("/").getPath();
 			} else {
-				// windows 环境下url 为null,所以需要通过 main() 传递  classpath 上下文路径
+				// windows 环境下url 为null,所以需要通过 main() 传递 classpath 上下文路径
 				path = EnvConfigurer.context;
 			}
-
 			logger.error("****[ " + path + " ]**** search path!");
 
+			// 应用打成war包方式查找执行类
 			String className = SearchClass.searchPackage(starterClass, path);
 			if (null == className) {
-				logger.error("****[ " + starterClass + " ]**** class is not existence! Server stop!");
-				System.exit(0);
-			}
 
+				// 应用打成Jar包方式查找执行类
+				// Windows OS
+				String jarFile = path.replaceAll("jar!/BOOT-INF/classes!/", "jar").replaceFirst("file:/", "");
+				className = SearchClass.searchJar(starterClass, jarFile);
+				if (null == className) {
+					logger.error("****[ " + starterClass + " ]**** class is not existence! Server stop!");
+					System.exit(0);
+				}
+
+			}
+			
+			logger.info(" >>> from {},search to {}", path, className);
 			AbsBootStarter bootStarter = (AbsBootStarter) ClassUtils.getClass(className).newInstance();
 			bootStarter.run(args);
 		} catch (InstantiationException e) {
@@ -75,12 +84,17 @@ public class BootApplication {
 				if (envArgs.indexOf("context=") > -1) {
 					String[] envs = envArgs.split("=");
 					EnvConfigurer.context = envs[1];
-					logger.warn("配置项：env=" + EnvConfigurer.env);
+					logger.info("context=" + EnvConfigurer.context);
 				}
 				if (envArgs.indexOf("env=") > -1) {
 					String[] envs = envArgs.split("=");
 					EnvConfigurer.env = envs[1];
-					logger.warn("配置项：env=" + EnvConfigurer.env);
+					logger.warn("env=" + EnvConfigurer.env);
+				}
+				if (envArgs.indexOf("--spring.profiles.active") > -1) {
+					String[] envs = envArgs.split("=");
+					EnvConfigurer.env = envs[1];
+					logger.warn("--spring.profiles.active=" + EnvConfigurer.env);
 				}
 			}
 		}
