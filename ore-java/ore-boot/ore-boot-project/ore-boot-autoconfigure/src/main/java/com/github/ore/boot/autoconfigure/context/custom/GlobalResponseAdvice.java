@@ -36,7 +36,7 @@ public class GlobalResponseAdvice implements ResponseBodyAdvice<Object> {
 
 		// Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 		Gson gson = new Gson();
-		String response = "response body   >>> {}";
+		String response = "response body   > {}";
 		if (body instanceof ResultEntity) {
 			log.info(response, gson.toJson(body));
 			return body;
