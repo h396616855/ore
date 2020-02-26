@@ -6,20 +6,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import org.slf4j.MarkerFactory;
 import org.springframework.boot.env.PropertySourceLoader;
 import org.springframework.core.env.PropertiesPropertySource;
 import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 
-import lombok.extern.slf4j.Slf4j;
+import com.github.ore.boot.autoconfigure.config.Constants;
 
-@Slf4j
 public class PropertiesPropertySourceLoader implements PropertySourceLoader {
-
-	private static String logMarker = "ore-boot";
 
 	@Override
 	public String[] getFileExtensions() {
@@ -35,8 +33,11 @@ public class PropertiesPropertySourceLoader implements PropertySourceLoader {
 		while (it.hasNext()) {
 			String key = it.next();
 			String value = properties.getProperty(key);
-			if (log.isDebugEnabled()) {
-				log.info(MarkerFactory.getMarker(logMarker), resource.getFilename() + " config is >>> {}={}", key, value);
+			Matcher matchm = Pattern.compile(Constants.FILTER_WORD).matcher(key);
+			if (matchm.find()) {
+				System.out.println(name + " config >>> " + key + "=************");
+			} else {
+				System.out.println(name + " config >>> " + key + "=" + value);
 			}
 		}
 		PropertiesPropertySource proSource = new PropertiesPropertySource(name, properties);
