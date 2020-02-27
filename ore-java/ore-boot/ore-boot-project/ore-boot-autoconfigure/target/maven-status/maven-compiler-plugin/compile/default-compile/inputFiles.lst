@@ -1,0 +1,11 @@
+E:\anine\ore-seed\ore-seed-template\framework\ore\ore-java\ore-boot\ore-boot-project\ore-boot-autoconfigure\src\main\java\com\github\ore\boot\autoconfigure\context\GlobalResponseAutoConfigure.java
+E:\anine\ore-seed\ore-seed-template\framework\ore\ore-java\ore-boot\ore-boot-project\ore-boot-autoconfigure\src\main\java\com\github\ore\boot\autoconfigure\context\custom\GlobalRequestBodyFilter.java
+E:\anine\ore-seed\ore-seed-template\framework\ore\ore-java\ore-boot\ore-boot-project\ore-boot-autoconfigure\src\main\java\com\github\ore\boot\autoconfigure\context\custom\GlobalExceptionHandler.java
+E:\anine\ore-seed\ore-seed-template\framework\ore\ore-java\ore-boot\ore-boot-project\ore-boot-autoconfigure\src\main\java\com\github\ore\boot\autoconfigure\context\custom\GlobalRequestBodyAdvice.java
+E:\anine\ore-seed\ore-seed-template\framework\ore\ore-java\ore-boot\ore-boot-project\ore-boot-autoconfigure\src\main\java\com\github\ore\boot\autoconfigure\context\GlobalExceptionAutoConfigure.java
+E:\anine\ore-seed\ore-seed-template\framework\ore\ore-java\ore-boot\ore-boot-project\ore-boot-autoconfigure\src\main\java\com\github\ore\boot\autoconfigure\context\SpringContextAutoConfigure.java
+E:\anine\ore-seed\ore-seed-template\framework\ore\ore-java\ore-boot\ore-boot-project\ore-boot-autoconfigure\src\main\java\com\github\ore\boot\autoconfigure\config\Constants.java
+E:\anine\ore-seed\ore-seed-template\framework\ore\ore-java\ore-boot\ore-boot-project\ore-boot-autoconfigure\src\main\java\com\github\ore\boot\autoconfigure\config\properties\PropertiesPropertySourceLoader.java
+E:\anine\ore-seed\ore-seed-template\framework\ore\ore-java\ore-boot\ore-boot-project\ore-boot-autoconfigure\src\main\java\com\github\ore\boot\autoconfigure\config\yml\YamlPropertySourceLoader.java
+E:\anine\ore-seed\ore-seed-template\framework\ore\ore-java\ore-boot\ore-boot-project\ore-boot-autoconfigure\src\main\java\com\github\ore\boot\autoconfigure\context\custom\GlobalResponseAdvice.java
+E:\anine\ore-seed\ore-seed-template\framework\ore\ore-java\ore-boot\ore-boot-project\ore-boot-autoconfigure\src\main\java\com\github\ore\boot\autoconfigure\context\GlobalRequestAutoConfigure.java

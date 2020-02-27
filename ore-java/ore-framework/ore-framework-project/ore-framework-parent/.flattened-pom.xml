@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.github.ore.framework</groupId>
+    <artifactId>ore-framework-dependencies</artifactId>
+    <version>1.0.12.RELEASE</version>
+    <relativePath>../ore-framework-dependencies</relativePath>
+  </parent>
+  <groupId>com.github.ore.framework</groupId>
+  <artifactId>ore-framework-parent</artifactId>
+  <version>1.0.12.RELEASE</version>
+  <packaging>pom</packaging>
+  <name>ORE Framework Parent</name>
+  <description>ORE Framework Parent</description>
+  <properties>
+    <java.version>1.8</java.version>
+    <main.basedir>..</main.basedir>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-install-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-deploy-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>

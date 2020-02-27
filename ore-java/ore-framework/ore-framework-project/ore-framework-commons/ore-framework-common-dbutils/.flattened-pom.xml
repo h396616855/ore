@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.github.ore.framework.commons</groupId>
+    <artifactId>ore-framework-commons</artifactId>
+    <version>1.0.12.RELEASE</version>
+  </parent>
+  <groupId>com.github.ore.framework.commons</groupId>
+  <artifactId>ore-framework-common-dbutils</artifactId>
+  <version>1.0.12.RELEASE</version>
+  <properties>
+    <main.basedir>${basedir}/../..</main.basedir>
+    <mysql.version>5.1.40</mysql.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysql.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-dbcp</groupId>
+      <artifactId>commons-dbcp</artifactId>
+    </dependency>
+  </dependencies>
+</project>
