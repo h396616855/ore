@@ -5,11 +5,11 @@
   <parent>
     <groupId>com.github.ore.framework.commons</groupId>
     <artifactId>ore-framework-commons</artifactId>
-    <version>1.0.12.RELEASE</version>
+    <version>1.0.15.RELEASE</version>
   </parent>
   <groupId>com.github.ore.framework.commons</groupId>
   <artifactId>ore-framework-common-math</artifactId>
-  <version>1.0.12.RELEASE</version>
+  <version>1.0.15.RELEASE</version>
   <properties>
     <main.basedir>${basedir}/../..</main.basedir>
   </properties>

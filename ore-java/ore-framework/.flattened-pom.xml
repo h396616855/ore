@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.ore.framework</groupId>
   <artifactId>ore-framework-build</artifactId>
-  <version>1.0.12.RELEASE</version>
+  <version>1.0.15.RELEASE</version>
   <packaging>pom</packaging>
   <name>ORE Framework Project</name>
   <description>ORE Framework Build</description>
@@ -15,7 +15,7 @@
     <module>ore-framework-project</module>
   </modules>
   <properties>
-    <revision>1.0.12.RELEASE</revision>
+    <revision>1.0.15.RELEASE</revision>
     <main.basedir>${basedir}</main.basedir>
   </properties>
   <build>

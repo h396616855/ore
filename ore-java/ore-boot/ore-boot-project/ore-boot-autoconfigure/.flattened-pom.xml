@@ -5,12 +5,12 @@
   <parent>
     <groupId>com.github.ore.boot</groupId>
     <artifactId>ore-boot-parent</artifactId>
-    <version>1.0.12.RELEASE</version>
+    <version>1.0.15.RELEASE</version>
     <relativePath>../ore-boot-parent</relativePath>
   </parent>
   <groupId>com.github.ore.boot</groupId>
   <artifactId>ore-boot-autoconfigure</artifactId>
-  <version>1.0.12.RELEASE</version>
+  <version>1.0.15.RELEASE</version>
   <name>ore-boot-autoconfigure</name>
   <description>ORE Boot AutoConfigure</description>
   <properties>
@@ -50,6 +50,11 @@
     <dependency>
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
       <optional>true</optional>
     </dependency>
   </dependencies>

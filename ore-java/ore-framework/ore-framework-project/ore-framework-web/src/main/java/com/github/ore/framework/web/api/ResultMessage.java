@@ -76,5 +76,6 @@ public abstract class ResultMessage {
 	 * 自定义业务返回码：BIZ_2XXXX,BIZ_3XXXX,BIZ_4XXXX,BIZ_5XXXX 等
 	 */
 	public static final String BIZ_20000 = "20000^业务正常";
+	public static final String BIZ_20001 = "20001^请求参数不能为空";
 
 }

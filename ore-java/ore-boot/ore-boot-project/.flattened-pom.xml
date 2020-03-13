@@ -5,11 +5,11 @@
   <parent>
     <groupId>com.github.ore.boot</groupId>
     <artifactId>ore-boot-build</artifactId>
-    <version>1.0.12.RELEASE</version>
+    <version>1.0.15.RELEASE</version>
   </parent>
   <groupId>com.github.ore.boot</groupId>
   <artifactId>ore-boot-project</artifactId>
-  <version>1.0.12.RELEASE</version>
+  <version>1.0.15.RELEASE</version>
   <packaging>pom</packaging>
   <name>Ore Boot Build</name>
   <description>Ore Boot Build</description>

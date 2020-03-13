@@ -5,12 +5,12 @@
   <parent>
     <groupId>com.github.ore.boot</groupId>
     <artifactId>ore-boot-dependencies</artifactId>
-    <version>1.0.12.RELEASE</version>
+    <version>1.0.15.RELEASE</version>
     <relativePath>../ore-boot-dependencies</relativePath>
   </parent>
   <groupId>com.github.ore.boot</groupId>
   <artifactId>ore-boot-parent</artifactId>
-  <version>1.0.12.RELEASE</version>
+  <version>1.0.15.RELEASE</version>
   <packaging>pom</packaging>
   <name>ore-boot-parent</name>
   <description>ORE Boot Parent</description>

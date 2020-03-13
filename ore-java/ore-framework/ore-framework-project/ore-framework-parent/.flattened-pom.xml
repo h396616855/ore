@@ -5,12 +5,12 @@
   <parent>
     <groupId>com.github.ore.framework</groupId>
     <artifactId>ore-framework-dependencies</artifactId>
-    <version>1.0.12.RELEASE</version>
+    <version>1.0.15.RELEASE</version>
     <relativePath>../ore-framework-dependencies</relativePath>
   </parent>
   <groupId>com.github.ore.framework</groupId>
   <artifactId>ore-framework-parent</artifactId>
-  <version>1.0.12.RELEASE</version>
+  <version>1.0.15.RELEASE</version>
   <packaging>pom</packaging>
   <name>ORE Framework Parent</name>
   <description>ORE Framework Parent</description>
