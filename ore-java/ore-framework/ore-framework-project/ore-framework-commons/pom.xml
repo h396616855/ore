@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.github.ore.framework</groupId>
+		<artifactId>ore-framework-parent</artifactId>
+		<version>${revision}</version>
+		<relativePath>../ore-framework-parent</relativePath>
+	</parent>
+	<groupId>com.github.ore.framework.commons</groupId>
+	<artifactId>ore-framework-commons</artifactId>
+	<packaging>pom</packaging>
+	<properties>
+		<main.basedir>${basedir}/..</main.basedir>
+	</properties>
+	<modules>
+		<module>ore-framework-common-dbutils</module>
+		<module>ore-framework-common-math</module>
+		<module>ore-framework-common-tree</module>
+		<module>ore-framework-common-lang</module>
+	</modules>
+
+</project>

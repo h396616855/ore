@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.github.ore.boot</groupId>
+		<artifactId>ore-boot-starters</artifactId>
+		<version>${revision}</version>
+	</parent>
+	<artifactId>ore-boot-starter-wechat</artifactId>
+	<name>ORE Boot Wechart Starter</name>
+	<description>ORE Boot Wechart Starter</description>
+
+	<properties>
+		<main.basedir>${basedir}/../..</main.basedir>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>ore-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ore.framework.wechat</groupId>
+			<artifactId>ore-framework-wechat-wechat4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ore.framework.wechat</groupId>
+			<artifactId>ore-framework-wechat-weixin4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ore.framework.wechat</groupId>
+			<artifactId>ore-framework-wechat-wxtools</artifactId>
+		</dependency>
+	</dependencies>
+</project>
