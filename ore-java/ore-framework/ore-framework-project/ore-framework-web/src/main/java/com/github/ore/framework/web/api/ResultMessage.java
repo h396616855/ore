@@ -77,5 +77,6 @@ public abstract class ResultMessage {
 	 */
 	public static final String BIZ_20000 = "20000^业务正常";
 	public static final String BIZ_20001 = "20001^请求参数不能为空";
+	public static final String BIZ_20002 = "20002^还存在引用";
 
 }

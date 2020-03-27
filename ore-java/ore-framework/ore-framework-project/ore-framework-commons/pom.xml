@@ -17,6 +17,7 @@
 		<module>ore-framework-common-dbutils</module>
 		<module>ore-framework-common-math</module>
 		<module>ore-framework-common-tree</module>
+		<module>ore-framework-common-lang</module>
 	</modules>
 
 </project>

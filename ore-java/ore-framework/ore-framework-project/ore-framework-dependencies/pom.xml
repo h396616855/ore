@@ -43,6 +43,26 @@
 				<version>${revision}</version>
 			</dependency>
 			<dependency>
+				<groupId>com.github.ore.framework.commons</groupId>
+				<artifactId>ore-framework-common-dbutils</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.ore.framework.commons</groupId>
+				<artifactId>ore-framework-common-lang</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.ore.framework.commons</groupId>
+				<artifactId>ore-framework-common-math</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.ore.framework.commons</groupId>
+				<artifactId>ore-framework-common-tree</artifactId>
+				<version>${revision}</version>
+			</dependency>
+			<dependency>
 				<groupId>com.github.ore.framework</groupId>
 				<artifactId>ore-framework-entity</artifactId>
 				<version>${revision}</version>
