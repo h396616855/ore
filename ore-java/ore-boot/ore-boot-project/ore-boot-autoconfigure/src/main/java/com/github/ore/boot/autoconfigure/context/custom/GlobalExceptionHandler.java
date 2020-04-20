@@ -10,8 +10,6 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
 import com.github.ore.framework.web.api.ResultEntity;
-import com.github.ore.framework.web.api.ResultMessage;
-import com.github.ore.framework.web.utils.ResultMessageUtils;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.boot.context.properties.bind.BindException;
@@ -37,9 +35,28 @@ import lombok.extern.slf4j.Slf4j;
 public class GlobalExceptionHandler {
 
 	private final static String leftBrackets = "[";
-	
+
 	private final static String rightBrackets = "]";
-	
+
+	private ResultEntity<String> extractedValidParams(ResultEntity<String> result, List<ObjectError> objectErrors) {
+		StringBuilder msgBuilder = new StringBuilder();
+		for (ObjectError objectError : objectErrors) {
+			msgBuilder.append(objectError.getDefaultMessage()).append(",");
+		}
+		String errorMessage = msgBuilder.toString();
+		if (errorMessage.length() > 1) {
+			errorMessage = errorMessage.substring(0, errorMessage.length() - 1);
+			if (errorMessage.contains(leftBrackets) && errorMessage.contains(rightBrackets)) {
+				int start = errorMessage.indexOf("[");
+				int end = errorMessage.indexOf("]");
+				result.setData(errorMessage.substring(start + 1, end));
+			}
+		}
+
+		result.setMsg(errorMessage);
+		return result;
+	}
+
 	/**
 	 * 请求参数类型错误异常的捕获
 	 * 
@@ -48,12 +65,11 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(value = { BindException.class })
 	@ResponseBody
-	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
 	public ResultEntity<String> badRequest(BindException e) {
 		log.error("occurs error when execute method ,message {}", e.getMessage());
 		ExceptionUtils.printRootCauseStackTrace(e);
 		ResultEntity<String> result = new ResultEntity<String>();
-		result.setCode(ResultMessageUtils.splitCode(ResultMessage.HTTP_ERROR_400));
+		result.setCode(String.valueOf(HttpStatus.BAD_REQUEST.value()));
 		result.setMsg(e.getMessage());
 		return result;
 	}
@@ -66,13 +82,12 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(value = { NoHandlerFoundException.class })
 	@ResponseBody
-	@ResponseStatus(value = HttpStatus.NOT_FOUND)
-	public ResultEntity<String> badRequestNotFound(HttpServletRequest request, HttpServletResponse response,
-			final Exception e) {
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public ResultEntity<String> badRequestNotFound(HttpServletRequest request, HttpServletResponse response, final Exception e) {
 		log.error("occurs error when execute method ,message {}", e.getMessage());
 		ExceptionUtils.printRootCauseStackTrace(e);
 		ResultEntity<String> result = new ResultEntity<String>();
-		result.setCode(ResultMessageUtils.splitCode(ResultMessage.HTTP_ERROR_404));
+		result.setCode(String.valueOf(HttpStatus.NOT_FOUND.value()));
 		result.setMsg(e.getMessage());
 		return result;
 	}
@@ -85,12 +100,12 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(value = { ConnectException.class })
 	@ResponseBody
-	@ResponseStatus(value = HttpStatus.GATEWAY_TIMEOUT)
+	@ResponseStatus(HttpStatus.GATEWAY_TIMEOUT)
 	public ResultEntity<String> connect(Exception e) {
 		log.error("occurs error when execute method ,message {}", e.getMessage());
 		ExceptionUtils.printRootCauseStackTrace(e);
 		ResultEntity<String> result = new ResultEntity<String>();
-		result.setCode(ResultMessageUtils.splitCode(ResultMessage.HTTP_ERROR_504));
+		result.setCode(String.valueOf(HttpStatus.GATEWAY_TIMEOUT.value()));
 		result.setMsg(e.getMessage());
 		return result;
 	}
@@ -107,25 +122,10 @@ public class GlobalExceptionHandler {
 		log.error("occurs error when execute method ,message {}", e.getMessage());
 		ExceptionUtils.printRootCauseStackTrace(e);
 		ResultEntity<String> result = new ResultEntity<String>();
-		result.setCode(ResultMessageUtils.splitCode(ResultMessage.BIZ_20001));
+		result.setCode(String.valueOf(HttpStatus.BAD_REQUEST.value()));
 		List<ObjectError> objectErrors = e.getBindingResult().getAllErrors();
 		if (!CollectionUtils.isEmpty(objectErrors)) {
-			StringBuilder msgBuilder = new StringBuilder();
-			for (ObjectError objectError : objectErrors) {
-				msgBuilder.append(objectError.getDefaultMessage()).append(",");
-			}
-			String errorMessage = msgBuilder.toString();
-			if (errorMessage.length() > 1) {
-				errorMessage = errorMessage.substring(0, errorMessage.length() - 1);
-				if (errorMessage.contains(leftBrackets) && errorMessage.contains(rightBrackets)) {
-					int start = errorMessage.indexOf("[");
-					int end = errorMessage.indexOf("]");
-					result.setData(errorMessage.substring(start + 1, end));
-				}
-			}
-
-			result.setMsg(errorMessage);
-			return result;
+			return extractedValidParams(result, objectErrors);
 		}
 		result.setMsg(e.getMessage());
 		return result;
@@ -143,7 +143,7 @@ public class GlobalExceptionHandler {
 		log.error("occurs error when execute method ,message {}", e.getMessage());
 		ExceptionUtils.printRootCauseStackTrace(e);
 		ResultEntity<String> result = new ResultEntity<String>();
-		result.setCode(ResultMessageUtils.splitCode(ResultMessage.BIZ_20001));
+		result.setCode(String.valueOf(HttpStatus.BAD_REQUEST.value()));
 		Set<ConstraintViolation<?>> constraintViolations = e.getConstraintViolations();
 		if (!CollectionUtils.isEmpty(constraintViolations)) {
 			StringBuilder msgBuilder = new StringBuilder();
@@ -166,6 +166,22 @@ public class GlobalExceptionHandler {
 		return result;
 	}
 
+	@ExceptionHandler(org.springframework.validation.BindException.class)
+	@ResponseBody
+	public ResultEntity<String> validException(org.springframework.validation.BindException e) {
+		log.error("occurs error when execute method ,message {}", e.getMessage());
+		ExceptionUtils.printRootCauseStackTrace(e);
+		ResultEntity<String> result = new ResultEntity<String>();
+		result.setCode(String.valueOf(HttpStatus.BAD_REQUEST.value()));
+		List<ObjectError> objectErrors = e.getBindingResult().getAllErrors();
+		if (!CollectionUtils.isEmpty(objectErrors)) {
+			return extractedValidParams(result, objectErrors);
+		}
+
+		result.setMsg(e.getMessage());
+		return result;
+	}
+
 	/**
 	 * 其他全局异常在此捕获
 	 * 
@@ -174,12 +190,12 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(value = { Throwable.class })
 	@ResponseBody
-	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-	public ResultEntity<String> notAllowed(Exception e) {
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	public ResultEntity<String> globalException(Exception e) {
 		log.error("occurs error when execute method ,message {}", e.getMessage());
 		ExceptionUtils.printRootCauseStackTrace(e);
 		ResultEntity<String> result = new ResultEntity<String>();
-		result.setCode(ResultMessageUtils.splitCode(ResultMessage.HTTP_ERROR_500));
+		result.setCode(String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()));
 		result.setMsg(e.getMessage());
 		return result;
 	}

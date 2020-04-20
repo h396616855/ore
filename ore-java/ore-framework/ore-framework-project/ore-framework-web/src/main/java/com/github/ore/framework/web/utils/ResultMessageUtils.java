@@ -19,7 +19,7 @@ public class ResultMessageUtils {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(ResultMessageUtils.splitCode(ResultMessage.APP_10000));
-		System.out.println(ResultMessageUtils.splitMsg(ResultMessage.APP_10000));
+		System.out.println(ResultMessageUtils.splitCode(ResultMessage.BIZ_20000));
+		System.out.println(ResultMessageUtils.splitMsg(ResultMessage.BIZ_20000));
 	}
 }

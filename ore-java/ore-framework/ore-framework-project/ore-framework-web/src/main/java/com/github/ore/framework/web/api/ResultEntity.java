@@ -16,12 +16,12 @@ public class ResultEntity<T> {
 	/**
 	 * 请求接口的返回码
 	 */
-	private String code = ResultMessageUtils.splitCode(ResultMessage.SYSTEM_0);
+	private String code = ResultMessageUtils.splitCode(ResultMessage.SYS_0);
 
 	/**
 	 * 需要传递的信息，例如错误信息
 	 */
-	private String msg = ResultMessageUtils.splitMsg(ResultMessage.SYSTEM_0);
+	private String msg = ResultMessageUtils.splitMsg(ResultMessage.SYS_0);
 
 	/**
 	 * 返回访问时间单位为毫秒
