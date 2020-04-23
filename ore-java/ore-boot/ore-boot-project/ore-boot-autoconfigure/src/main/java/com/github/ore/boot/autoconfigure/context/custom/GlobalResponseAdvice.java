@@ -50,7 +50,7 @@ public class GlobalResponseAdvice implements ResponseBodyAdvice<Object> {
 	private Object translateName(Object body) {
 		
 		if (null == LOWER_CASE_WITH_UNDERSCORES) {
-			LOWER_CASE_WITH_UNDERSCORES = ColumnsStyleEnum.UNDERLINE.toString().equals(columnsStyle) ? true : false;
+			LOWER_CASE_WITH_UNDERSCORES = ColumnsStyleEnum.UNDERLINE.value().equals(columnsStyle) ? true : false;
 		}
 
 		if (LOWER_CASE_WITH_UNDERSCORES) {
