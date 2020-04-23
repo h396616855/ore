@@ -120,7 +120,6 @@ public class GlobalExceptionHandler {
 	@ResponseBody
 	public ResultEntity<String> validException(MethodArgumentNotValidException e) {
 		log.error("occurs error when execute method ,message {}", e.getMessage());
-		ExceptionUtils.printRootCauseStackTrace(e);
 		ResultEntity<String> result = new ResultEntity<String>();
 		result.setCode(String.valueOf(HttpStatus.BAD_REQUEST.value()));
 		List<ObjectError> objectErrors = e.getBindingResult().getAllErrors();
@@ -141,7 +140,6 @@ public class GlobalExceptionHandler {
 	@ResponseBody
 	public ResultEntity<String> validException(ConstraintViolationException e) {
 		log.error("occurs error when execute method ,message {}", e.getMessage());
-		ExceptionUtils.printRootCauseStackTrace(e);
 		ResultEntity<String> result = new ResultEntity<String>();
 		result.setCode(String.valueOf(HttpStatus.BAD_REQUEST.value()));
 		Set<ConstraintViolation<?>> constraintViolations = e.getConstraintViolations();
@@ -170,7 +168,6 @@ public class GlobalExceptionHandler {
 	@ResponseBody
 	public ResultEntity<String> validException(org.springframework.validation.BindException e) {
 		log.error("occurs error when execute method ,message {}", e.getMessage());
-		ExceptionUtils.printRootCauseStackTrace(e);
 		ResultEntity<String> result = new ResultEntity<String>();
 		result.setCode(String.valueOf(HttpStatus.BAD_REQUEST.value()));
 		List<ObjectError> objectErrors = e.getBindingResult().getAllErrors();

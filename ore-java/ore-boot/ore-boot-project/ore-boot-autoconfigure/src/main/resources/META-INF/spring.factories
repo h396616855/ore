@@ -24,5 +24,6 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.github.ore.boot.autoconfigure.context.SpringContextAutoConfigure,\
 com.github.ore.boot.autoconfigure.context.GlobalRequestAutoConfigure,\
 com.github.ore.boot.autoconfigure.context.GlobalResponseAutoConfigure,\
-com.github.ore.boot.autoconfigure.context.GlobalExceptionAutoConfigure
+com.github.ore.boot.autoconfigure.context.GlobalExceptionAutoConfigure,\
+com.github.ore.boot.autoconfigure.context.GlobalRequestParamsModifyAutoConfigure
 
