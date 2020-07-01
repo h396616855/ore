@@ -93,29 +93,29 @@ public class GlobalResponseAdvice implements ResponseBodyAdvice<Object> {
 		String response = "response body   > {}";
 
 		if (null == body) {
-			log.info(response, body);
+			log.debug(response, body);
 			// return ResultEntity
 			return ResultEntity.data(null);
 		}
 
 		if (body instanceof ResultEntity) {
-			log.info(response, gson.toJson(body));
+			log.debug(response, gson.toJson(body));
 			// return ResultEntity
 			return translateName(body);
 		} else {
 			if (isBaseType(body)) {
 				String jsonObject = gson.toJson(ResultEntity.data(body.toString()));
-				log.info(response, jsonObject);
+				log.debug(response, jsonObject);
 				// return string
 				return jsonObject;
 			} else {
 				// 和swagger冲突，排除swagger的请求
 				if (null != body && (0 < body.toString().indexOf("path=/") || 0 < body.toString().indexOf("swagger") || 0 <= body.toString().indexOf("springfox.documentation.spring.web.json.Json"))) {
-					log.info(response, body.toString());
+					log.debug(response, body.toString());
 					// return string
 					return body;
 				} else {
-					log.info(response, gson.toJson(body));
+					log.debug(response, gson.toJson(body));
 					return translateName(body);
 				}
 			}

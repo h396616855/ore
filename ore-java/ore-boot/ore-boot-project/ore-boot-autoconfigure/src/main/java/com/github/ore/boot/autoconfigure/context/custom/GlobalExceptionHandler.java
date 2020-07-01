@@ -19,7 +19,6 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
@@ -28,7 +27,8 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * 
  * 统一处理异常,全局异常处理，只处理[系统级别]异常
- *
+ * 全部异常返回码通过返回ResultEntity设置：result.setCode(String.valueOf(HttpStatus.XXXX.value()));<\br>
+ * 不需要在方法添加注解:@ResponseStatus(HttpStatus.xxxx)
  */
 @RestControllerAdvice
 @Slf4j
@@ -82,7 +82,6 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(value = { NoHandlerFoundException.class })
 	@ResponseBody
-	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public ResultEntity<String> badRequestNotFound(HttpServletRequest request, HttpServletResponse response, final Exception e) {
 		log.error("occurs error when execute method ,message {}", e.getMessage());
 		ExceptionUtils.printRootCauseStackTrace(e);
@@ -100,7 +99,6 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(value = { ConnectException.class })
 	@ResponseBody
-	@ResponseStatus(HttpStatus.GATEWAY_TIMEOUT)
 	public ResultEntity<String> connect(Exception e) {
 		log.error("occurs error when execute method ,message {}", e.getMessage());
 		ExceptionUtils.printRootCauseStackTrace(e);
@@ -187,7 +185,6 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(value = { Throwable.class })
 	@ResponseBody
-	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	public ResultEntity<String> globalException(Exception e) {
 		log.error("occurs error when execute method ,message {}", e.getMessage());
 		ExceptionUtils.printRootCauseStackTrace(e);

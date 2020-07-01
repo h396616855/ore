@@ -32,7 +32,7 @@ public class GlobalRequestBodyAdvice implements RequestBodyAdvice {
 	public Object afterBodyRead(Object body, HttpInputMessage inputMessage, MethodParameter parameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
 		Gson gson = new Gson();
 		String jsonObject = gson.toJson(body);
-		log.info("request body    > {}",jsonObject);
+		log.debug("request body    > {}",jsonObject);
 		return body;
 	}
 
