@@ -10,7 +10,7 @@
 	<artifactId>ore-framework-common-dbutils</artifactId>
 	<properties>
 		<!-- <mysql.version>8.0.18</mysql.version> -->
-		<mysql.version>5.1.40</mysql.version>
+		<mysql.version>8.0.28</mysql.version>
 		<main.basedir>${basedir}/../..</main.basedir>
 	</properties>
 	<dependencies>
